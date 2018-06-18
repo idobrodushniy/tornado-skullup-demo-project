@@ -1,0 +1,7 @@
+#IDE cache
+.idea/
+
+#Byte-compiled files
+__pycache__/
+*.py[cod]
+local_settings.py

@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+
+  tornado_web:
+    build: .
+    container_name: tornado_web
+    command: bash -c "exec invoke startTornadoApp"
+    sysctls:
+      net.core.somaxconn: 1024
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 20000
+        hard: 40000
+    ports:
+      - "8000:8888"
+    volumes:
+      - ".:/opt/tornado_skillup_proj"
+
+
