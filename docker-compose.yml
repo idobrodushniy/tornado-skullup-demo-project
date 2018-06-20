@@ -13,9 +13,29 @@ services:
       nofile:
         soft: 20000
         hard: 40000
-    ports:
-      - "8000:8888"
     volumes:
       - ".:/opt/tornado_skillup_proj"
+    networks:
+      - async-backend
+
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    command: sh /etc/nginx/wait_for_other_services.sh
+    sysctls:
+      net.core.somaxconn: 1024
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 20000
+        hard: 40000
+    ports:
+      - "9999:9999"
+    depends_on:
+      - tornado_web
+    networks:
+      - async-backend
 
 
+networks:
+  async-backend:
