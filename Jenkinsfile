@@ -1,11 +1,11 @@
+#!/usr/bin/env groovy
 pipeline {
     agent any
 
     stages {
         stage('Build') {
             steps {
-                echo 'Building docker image'
-                docker build -t tornado_web .
+                sh 'docker build -t tornado_web:latest .'
             }
         }
         stage('Test') {
