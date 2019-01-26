@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                echo 'Building docker image'
+                docker build -t tornado_web:latest .
             }
         }
         stage('Test') {
