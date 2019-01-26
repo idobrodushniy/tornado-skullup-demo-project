@@ -5,7 +5,7 @@ services:
   tornado_web:
     build: .
     container_name: tornado_web
-    command: bash -c "exec invoke startTornadoApp"
+    command: bash -c "python3 -m tornado_app.main"
     sysctls:
       net.core.somaxconn: 1024
     ulimits:
